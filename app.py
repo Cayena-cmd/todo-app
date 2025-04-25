@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from datetime import datetime
 from functools import wraps
+from waitress import serve
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -183,4 +184,4 @@ def add_header(response):
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(app, host="0.0.0.0", port=9000)
